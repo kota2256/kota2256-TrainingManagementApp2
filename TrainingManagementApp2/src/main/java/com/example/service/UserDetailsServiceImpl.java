@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -40,11 +39,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		authorities.add(authority);
 		
-		//UserDetails生成：※userId, pass, 権限リストの設定が必須、UserDetailsの実装クラスのUserを生成し引数で渡す　
-		UserDetails userDetails = (UserDetails) new User(
+		//UserDetails生成：※userId, pass, 権限リストの設定が必須、UserDetailsの実装クラスのUserを生成し引数で渡す。
+		//Userを継承した独自のUserWithNameクラスを用意してNameもSpringSecurityに渡して扱えるようにする。
+		UserDetails userDetails = (UserDetails) new UserWithName(
 				loginUser.getEmail(), 
 				loginUser.getPassword(), 
-				authorities);
+				authorities,
+				loginUser.getName());
 		
 		return userDetails;
 	}

@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @Configuration				// 設定ファイルであることを示すアノテーション
@@ -38,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 			.antMatchers("/login").permitAll()
 			.antMatchers("/signup").permitAll()
+			.antMatchers("/home").permitAll()
 			.anyRequest().authenticated();
 		
 		http.formLogin()
@@ -47,7 +49,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.passwordParameter("password")
 		.failureUrl("/login?error")						//ログイン失敗時のリダイレクト先
 		.defaultSuccessUrl("/home", true);		//認証後にリダイレクトする場所を指定
-				
+		
+		http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+			.logoutUrl("/logout")
+			.logoutSuccessUrl("/login?logout");
+		
 		http.csrf().disable();	
 	}
 	

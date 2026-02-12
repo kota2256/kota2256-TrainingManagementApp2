@@ -11,11 +11,9 @@ public class LoginController {
 		return "login";
 	}
 	
+	//SecurityConfigで設定済み
 //	@PostMapping("login")
 //	public String postLogin() {
-//		
-//		//ユーザー認証処理
-//		
 //		return "redirect:/home";
 //	}
 }

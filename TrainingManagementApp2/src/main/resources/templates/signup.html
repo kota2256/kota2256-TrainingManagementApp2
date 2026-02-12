@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http//www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-pre}">
+	
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -14,7 +17,7 @@
 	<title>新規登録</title>
 </head>
 <body>
-	<div class="form-signup">
+	<div layout:fragment="content-pre" class="form-signup">
 		<form method="post" th:action="@{/signup}"  th:object="${signupForm}">
 			<h6 class="text-center font-weight-bold mt-5">新規登録</h6>
 			<!--ユーザー名-->

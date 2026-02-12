@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http//www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-pre}">
+	
+<head>
+</head>
+
+<body>
+	<!--ログイン前用-->
+	<nav layout:fragment="header-pre" class="navbar  fixed-top navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">TrainingManagementApp2</a>
+	</nav>
+	
+	<!-- Spring Securityからユーザ名を取得して表示する -->
+	<div sec:authentication="name"></div>
+	
+	<!--ログイン後用-->
+	<nav layout:fragment="header-post" class="navbar  fixed-top navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">TrainingManagementApp2</a>
+		<form method="post" th:action="@{/logout}">
+			<div class="d-flex align-items-center">
+				<!-- Spring Securityからユーザ名を取得して表示する -->
+				<div sec:authentication="principal.name"  class="text-light pr-3"></div>
+				<!--ログアウトボタン-->
+				<div>
+					<button type="submit" class="btn btn-outline-light">logout</button>
+				</div>
+				
+			</div>
+		</form>
+	</nav>
+</body>
+</html>
