@@ -8,6 +8,6 @@ public interface TMService {
 	public void signup(MUser user);
 	
 	//ログインユーザー情報取得
-//	public MUser getLoginUser(String email);
+	public MUser getLoginUser(String email);
 }
 

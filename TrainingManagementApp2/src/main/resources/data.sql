@@ -6,8 +6,9 @@ VALUES
 
 INSERT INTO users (id, role_code, name, password, email)
 VALUES
-(1, 1, '管理者太郎', 'password', 'admin@mail.com'),
-(2, 2, '一般二郎', 'password', 'user@mail.com');
+(1, 1, '管理者太郎', '$2a$10$/D6s7mzc34Bqm2ycuCDsj.W9fh8APyhju7EdL6RxzbNvFUIT4oO3C', 'admin@mail.com'),
+(2, 2, '一般二郎', '$2a$10$/D6s7mzc34Bqm2ycuCDsj.W9fh8APyhju7EdL6RxzbNvFUIT4oO3C', 'user@mail.com');
+--passはいずれも"password"
 --usersテーブル定義の変更、user_idカラムの変更、自動採番3から
 ALTER TABLE users ALTER COLUMN id RESTART WITH 3;
 
