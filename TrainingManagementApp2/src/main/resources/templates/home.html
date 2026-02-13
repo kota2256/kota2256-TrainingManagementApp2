@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity"
 	xmlns:layout="http//www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/layout-post}">
 	
@@ -29,12 +30,11 @@
 			</div>
 			
 			<!--ユーザー閲覧ボタン-->
-			<div class="col-12 mt-3">
+			<div sec:authorize="hasRole('ADMIN')" class="col-12 mt-3">
 				<a th:href="@{/admin/userList}" class="btn btn-success w-100">ユーザー閲覧</a>
 			</div>
 		</div>
 	</div>
-	
 	
 	<!-- BootStrap -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
