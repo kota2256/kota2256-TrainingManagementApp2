@@ -1,5 +1,7 @@
 package com.example.service;
 
+import java.util.List;
+
 import com.example.model.MUser;
 
 public interface TMService {
@@ -9,5 +11,8 @@ public interface TMService {
 	
 	//ログインユーザー情報取得
 	public MUser getLoginUser(String email);
-}
+	
+	//ユーザー情報全件取得
+	public List<MUser> getUsers();
+ }
 
