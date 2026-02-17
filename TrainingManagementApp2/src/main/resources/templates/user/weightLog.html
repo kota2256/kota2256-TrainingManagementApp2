@@ -19,7 +19,6 @@
 	<div layout:fragment="content-post" class="form-weightLog">
 		<form method="post" th:action="@{/user/weightLog}"  th:object="${weightLogForm}">
 			<h6 class="text-center font-weight-bold mt-5 mb-5">体重記録</h6>
-			
 			<!--日付-->
 			<div class="mt-5 mb-3">	
 				<label for="recordedDate" th:text="#{recordedDate}"></label>
@@ -27,17 +26,14 @@
 					 class="form-control" th:field="*{recordedDate}" th:errorclass="is-invalid"/>
 				<div class="invalid-feedback" th:errors="*{recordedDate}"></div>
 			</div>
-			
 			<!--体重-->
 			<div class="mb-3">	
 				<label for="weight" th:text="#{weight}"></label>
-				<input type="number" placeholder="56.7" step="0.1" class="form-control" th:field="*{weight}" th:errorclass="is-invalid"/>
+				<input type="number" placeholder="00.0" step="0.1" class="form-control" th:field="*{weight}" th:errorclass="is-invalid"/>
 				<div class="invalid-feedback" th:errors="*{weight}"></div>
 			</div>
-			
 			<!--記録ボタン-->
 			<input type="submit" value="記録" class="btn btn-outline-dark w-100 mt-3">
-			
 		</form>
 		<!--戻るボタン-->
 		<!--	onclick="location.href='URL'"：ボタンリンクの正しい指定方法はこれ！-->
