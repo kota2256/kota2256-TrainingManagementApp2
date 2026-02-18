@@ -3,6 +3,7 @@ package com.example.repository;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.model.MUser;
+import com.example.model.WeightLog;
 
 @Mapper
 public interface TMMapper {
@@ -12,5 +13,8 @@ public interface TMMapper {
 	
 	// ログインユーザー取得
 	public MUser findLoginUser(String email);
+	
+	//体重記録
+	public int insertWeightLog(WeightLog weightLog);
 	
 }

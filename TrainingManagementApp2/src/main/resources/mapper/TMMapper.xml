@@ -22,13 +22,6 @@
 	
 </resultMap>
 
-
-<!-- 
-	private String name;
-	private String password;
-	private String email;
-	private String roleValue; -->
-
 	<!-- ユーザー1件登録 --> 
 	<insert id="insertOne">
 		INSERT INTO users (
@@ -42,6 +35,20 @@
 			#{name},
 			#{password},
 			#{email}
+		)
+	</insert>
+	
+		<!-- 体重記録1件登録 --> 
+	<insert id="insertWeightLog">
+		INSERT INTO physical_details (
+			user_id,
+			weight	,
+			recorded_date
+		)
+		VALUES(
+			#{userId},
+			#{weight},
+			#{recodedDate}
 		)
 	</insert>
 	
