@@ -31,7 +31,7 @@
 			
 			<!--ユーザー閲覧ボタン-->
 			<div sec:authorize="hasRole('ADMIN')" class="col-12 mt-3">
-				<a th:href="@{/admin/userList}" class="btn btn-success w-100">ユーザー閲覧</a>
+				<a th:href="@{/users}" class="btn btn-success w-100">ユーザー閲覧</a>
 			</div>
 		</div>
 	</div>
