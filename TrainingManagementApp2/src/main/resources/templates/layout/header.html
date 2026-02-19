@@ -10,7 +10,7 @@
 <body>
 	<!--ログイン前用-->
 	<nav layout:fragment="header-pre" class="navbar  fixed-top navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">TrainingManagementApp2</a>
+		<a class="navbar-brand" href="/home">TrainingManagementApp2</a>
 	</nav>
 	
 	<!-- Spring Securityからユーザ名を取得して表示する -->
@@ -18,7 +18,7 @@
 	
 	<!--ログイン後用-->
 	<nav layout:fragment="header-post" class="navbar  fixed-top navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">TrainingManagementApp2</a>
+		<a class="navbar-brand" href="/home">TrainingManagementApp2</a>
 		<form method="post" th:action="@{/logout}">
 			<div class="d-flex align-items-center">
 				<!-- Spring Securityからユーザ名を取得して表示する -->
