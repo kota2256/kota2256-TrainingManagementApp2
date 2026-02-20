@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.form.WeightLogForm;
+import com.example.model.MUser;
+import com.example.model.WeightLog;
+import com.example.service.TMService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,10 +22,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class WeightLogController {
 
-//	@Autowired
-//	private TMService tmService;
-//	@Autowired
-//	private ModelMapper modelMapper;
+	@Autowired
+	private TMService tmService;
+	@Autowired
+	private ModelMapper modelMapper;
 	
 	@GetMapping("/physicals/create")
 	public String getWeightLog(@ModelAttribute WeightLogForm form) {
@@ -36,13 +41,13 @@ public class WeightLogController {
 		log.info(form.toString());
 				
 		//ログインuserデータ取得 getUserOneメソッド要作成！！！
-//		MUser user = tmService.getUserOne(loginuser.getUsername());
+		MUser user = tmService.getLoginUser(loginuser.getUsername());
 		
 		//登録処理
-//		WeightLog weightLog = modelMapper.map(form, WeightLog.class);
-//		weightLog.setUserId(user.getId());
-//		tmService.insertWeightLog(weightLog);
-			
+		WeightLog weightLog = modelMapper.map(form, WeightLog.class);
+		weightLog.setUserId(user.getId());
+		tmService.insertWeightLog(weightLog);
+		
 		return "redirect:/home";
 	}
 }

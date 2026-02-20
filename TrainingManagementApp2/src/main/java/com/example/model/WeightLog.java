@@ -8,7 +8,7 @@ import lombok.Data;
 public class WeightLog {
 
 	private int userId;
-	private Date recodedDate;
+	private Date recordedDate;
 	private Double weight;
 	
 }
