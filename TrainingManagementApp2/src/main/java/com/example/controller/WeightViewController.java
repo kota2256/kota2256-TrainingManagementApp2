@@ -2,20 +2,14 @@ package com.example.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
-@RequestMapping("/user")
 public class WeightViewController {
 
-	@GetMapping("/weightView")
-	public String getWeightView() {
+	@GetMapping("physicals/users.{id}")
+	public String getWeightView(@PathVariable("id") String Id) {
+		
 		return "user/weightView";
-	}
-	
-	@PostMapping("/weightView")
-	public String postWeightView() {
-		return "redirect:/user/weightView";
 	}
 }
