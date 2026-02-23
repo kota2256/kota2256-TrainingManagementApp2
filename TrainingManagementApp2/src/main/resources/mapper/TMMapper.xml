@@ -5,6 +5,30 @@
 <!-- Mapperとxmlのマッピング -->
 <mapper namespace="com.example.repository.TMMapper">
 
+<!-- マッピング定義（ユーザー） -->
+<resultMap type="com.example.model.MUser" id="user">
+	<id column="id" property="id"/>
+	<result column="role_code" property="roleCode"/>
+	<result column="name" property="name"/>
+	<result column="password" property="password"/>
+	<result column="email" property="email"/>
+	<association property="role" resultMap="role"/>
+</resultMap>
+
+<!-- マッピング定義（権限） -->
+<resultMap type="com.example.model.Role" id="role">
+	<id column="code" property="code"/>
+	<result column="value" property="value"/>
+	
+</resultMap>
+
+
+<!-- 
+	private String name;
+	private String password;
+	private String email;
+	private String roleValue; -->
+
 	<!-- ユーザー1件登録 --> 
 	<insert id="insertOne">
 		INSERT INTO users (
@@ -22,9 +46,11 @@
 	</insert>
 	
 	<!-- ログインユーザー取得 --> 
-	 <select id="findLoginUser" resultType="MUser">
+	 <select id="findLoginUser" resultMap="user">
 		SELECT * 
 		FROM users 
+		LEFT JOIN roles
+			ON users.role_code = roles.code
 		WHERE email = #{email} 
 	</select> 
 	

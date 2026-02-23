@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.example.model.MUser;
+import com.example.model.Role;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -31,11 +32,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		}
 		
 		//権限リストの作成
-		String role = "GENERAL";
-		if (loginUser.getRoleCode()==1) {
-			role = "ADMIN";
-		}
-		GrantedAuthority authority = new SimpleGrantedAuthority(role);
+		Role role = loginUser.getRole();
+		String loginUserRoleValue = role.getValue();
+		GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + loginUserRoleValue);
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		authorities.add(authority);
 		
