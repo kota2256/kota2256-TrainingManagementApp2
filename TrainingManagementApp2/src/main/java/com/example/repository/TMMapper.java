@@ -3,6 +3,7 @@ package com.example.repository;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.example.model.MUser;
 import com.example.model.WeightLog;
@@ -18,4 +19,15 @@ public interface TMMapper {
 	
 	//体重記録全件取得
 	public List<WeightLog> findManyWeightLog(int userId);
+	
+	// 体重記録一覧（ページネーション用）
+	public List<WeightLog> findWeightLogByUserId(
+			@Param("userId") int userId,
+			@Param("pageSize") int pageSize, 
+			@Param("offset") int offset
+			);
+	
+	// 体重記録件数カウント
+	public int countWeightLogByUserId(@Param("userId") int userId);
+	
 }

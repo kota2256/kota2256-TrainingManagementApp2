@@ -15,5 +15,11 @@ public interface TMService {
 	
 	// 体重記録 全件取得
 	public List<WeightLog> getWeightLog(String email);
+	
+	// 体重記録 全件取得取得（ページネーション用）
+	public List<WeightLog> getWeightLog(String email, int page, int pageSize);
+	
+	// 体重記録の総件数取得
+	public int getWeightLogCount(String email);
 }
 

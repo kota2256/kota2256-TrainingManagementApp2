@@ -18,7 +18,7 @@
 </head>
 	
 <body>
-	<div layout:fragment="content-post" class="list-width">
+	<div layout:fragment="content-post" class="WeightList-width">
 		<h6 class="text-center font-weight-bold mt-5 mb-5">体重閲覧</h6>
 		
 		<!--体重記録の一覧表示-->
@@ -34,16 +34,40 @@
 				</thead>
 				<tbody>
 					<tr th:each="item:${weightLogList}">
-						<td th:text="${#dates.format(item.recordedDate, 'YYYY/MM/dd')}"></td>
-						<td th:text="${item.weight}"></td>
-						<td><a class="btn btn-primary" th:href="@{#}"><i class="fa-solid fa-pen"></i></a></td>
-						<td><a class="btn btn-danger" th:href="@{#}"><i class="fa-solid fa-trash"></i></a></td>
+						<td th:text="${#dates.format(item.recordedDate, 'YYYY/MM/dd')}" class="align-middle"></td>
+						<td th:text="${item.weight} + 'kg'" class="align-middle"></td>
+						<td><a class="btn btn-primary btn-sm align-middle" th:href="@{#}"><i class="fa-solid fa-pen"></i></a></td>
+						<td><a class="btn btn-danger btn-sm align-middle" th:href="@{#}"><i class="fa-solid fa-trash"></i></a></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		
 		<!--ページネーション-->
+		<div class="mt-4">
+			<nav aria-label="Page navigation example">
+				<ul class="pagination justify-content-center">
+					<!--最初のページ-->
+					<li th:classappend="${currentPage == 1} ? 'disabled'" class="page-item">	<!--disabled：クリックできないようにする-->
+						<a class="page-link" th:href="@{'/physicals/users.' + ${id}(page=1)}" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+							<span class="sr-only">Previous</span>
+						</a>
+					</li>
+					<!--ページ番号をループ表示　th:each="変数 : ${#numbers.sequence(開始値,終了値)}"：タイムリーフのループ処理-->
+					<li th:each="pageNum : ${#numbers.sequence(1, totalPages)}" th:classappend="${pageNum == currentPage} ? 'active'" class="page-item">
+						<a class="page-link" th:href="@{'/physicals/users.' + ${id}(page=${pageNum})}" th:text="${pageNum}"></a>
+					</li>
+					<!--最後のページ-->
+					<li th:classappend="${currentPage == totalPages} ? 'disabled'" class="page-item">
+						<a class="page-link" th:href="@{'/physicals/users.' + ${id}(page=${totalPages})}" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+							<span class="sr-only">Next</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
 		
 		<!--戻るボタン-->
 		<div class="btn-width">
