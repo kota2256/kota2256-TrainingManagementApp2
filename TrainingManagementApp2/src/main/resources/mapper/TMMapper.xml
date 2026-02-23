@@ -22,10 +22,10 @@
 	</insert>
 	
 	<!-- ログインユーザー取得 --> 
-	<!-- <select id="findLoginUser">
+	 <select id="findLoginUser" resultType="MUser">
 		SELECT * 
 		FROM users 
 		WHERE email = #{email} 
-	</select> -->
+	</select> 
 	
 </mapper>
