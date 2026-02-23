@@ -54,4 +54,11 @@
 		WHERE email = #{email} 
 	</select> 
 	
+	<!-- 体重記録の取得 -->
+	<select id="findManyWeightLog" resultType="WeightLog">
+	SELECT *
+	FROM physical_details
+	WHERE user_id = #{userId}
+	</select>
+	
 </mapper>
