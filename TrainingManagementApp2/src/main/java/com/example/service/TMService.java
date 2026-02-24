@@ -1,5 +1,6 @@
 package com.example.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.example.model.MUser;
@@ -21,5 +22,9 @@ public interface TMService {
 	
 	// 体重記録の総件数取得
 	public int getWeightLogCount(String email);
+	
+	// 体重記録 1件取得
+	public WeightLog getWeightLogOne(int userId, Date createdAt);
+	
 }
 

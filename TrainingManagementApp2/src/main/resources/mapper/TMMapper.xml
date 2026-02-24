@@ -76,4 +76,11 @@
 	WHERE user_id = #{userId}
 	</select>
 	
+	<!-- 体重記録1件取得 -->
+	<select id="findWeightLogOne" resultType="WeightLog">
+	SELECT *
+	FROM physical_details
+	WHERE user_id = #{userId}
+		AND created_at = #{createdAt}
+	</select>
 </mapper>

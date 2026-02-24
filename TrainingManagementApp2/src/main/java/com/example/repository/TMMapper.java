@@ -1,5 +1,6 @@
 package com.example.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -29,5 +30,11 @@ public interface TMMapper {
 	
 	// 体重記録件数カウント
 	public int countWeightLogByUserId(@Param("userId") int userId);
+	
+	// 体重記録1件取得
+	public WeightLog findWeightLogOne(
+			@Param("userId") int userId, 
+			@Param("createdAt") Date createdAt
+			);
 	
 }

@@ -1,5 +1,6 @@
 package com.example.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,12 @@ public class TMServiceImpl implements TMService {
 	public int getWeightLogCount(String email) {
 		int userId = getLoginUser(email).getId();
 		return mapper.countWeightLogByUserId(userId);
+	}
+	
+	// 体重記録 1件取得
+	@Override
+	public WeightLog getWeightLogOne(int userId, Date createdAt) {
+		return mapper.findWeightLogOne(userId, createdAt);
 	}
 	
 }
