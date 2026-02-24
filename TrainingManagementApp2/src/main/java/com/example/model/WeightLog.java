@@ -9,4 +9,5 @@ public class WeightLog {
 	private int userId;
 	private Date recordedDate;
 	private Double weight;
+	private Date createdAt;
 }
