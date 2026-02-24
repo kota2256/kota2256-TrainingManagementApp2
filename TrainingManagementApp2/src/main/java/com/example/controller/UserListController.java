@@ -16,7 +16,7 @@ public class UserListController {
 	@Autowired
 	TMService tmService;
 	
-	@GetMapping("/userList")
+	@GetMapping("/users")
 	public String getUserList(Model model) {
 		//ユーザーリストをモデル格納
 		List<MUser> userList = tmService.getUsers(); 
