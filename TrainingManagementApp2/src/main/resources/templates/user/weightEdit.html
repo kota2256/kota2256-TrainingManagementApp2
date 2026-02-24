@@ -19,8 +19,13 @@
 
 <body>
 	<div layout:fragment="content-post" class="form-signup">
-		<form method="post" th:action="@{/update}"  th:object="${weightEditForm}">
+		<form method="post"  th:object="${weightEditForm}" th:action="@{/update}" >		<!--(userId=*{userId}, createdAt=*{#dates.format(createdAt, 'EEE MMM dd HH:mm:ss zzz yyyy')})-->
 			<h6 class="text-center font-weight-bold mt-5">体重更新</h6>
+			
+			<!--userIdと登録日時-->
+			<input type="hidden" th:field="*{userId}"/>
+			<input type="hidden" th:field="*{createdAt}"/>
+			
 			<!--日付-->
 			<div class="mt-5 mb-3">
 				<label for="recordedDate" th:text="#{recordedDate}"></label>
