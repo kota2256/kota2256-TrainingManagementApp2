@@ -29,7 +29,7 @@ public class WeightViewController {
 //		model.addAttribute(weightLogList);
 		
 		//体重記録のリスト取得(ページネーション用）
-		int pageSize = 5;
+		int pageSize = 10;
 		List<WeightLog> weightLogList = tmService.getWeightLog(loginuser.getUsername(), page, pageSize);
 		
 		// 体重記録の総件数から総ページ数の取得(ページネーション用）
