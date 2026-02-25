@@ -26,5 +26,8 @@ public interface TMService {
 	// 体重記録 1件取得
 	public WeightLog getWeightLogOne(int userId, Date createdAt);
 	
+	// 体重記録 1件更新
+	public int updateWeightLogOne(int userId, Date createdAt, Date recordedDate, Double weight);
+	
 }
 

@@ -61,4 +61,10 @@ public class TMServiceImpl implements TMService {
 		return mapper.findWeightLogOne(userId, createdAt);
 	}
 	
+	// 体重記録 1件更新
+	@Override
+	public int updateWeightLogOne(int userId, Date createdAt, Date recordedDate, Double weight) {
+		return mapper.updateOne(userId, createdAt, recordedDate, weight);
+	}
+	
 }

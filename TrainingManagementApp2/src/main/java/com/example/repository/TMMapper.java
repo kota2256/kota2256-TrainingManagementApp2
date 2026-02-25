@@ -37,4 +37,13 @@ public interface TMMapper {
 			@Param("createdAt") Date createdAt
 			);
 	
+	// 体重記録一件更新
+	public int updateOne(
+		@Param("userId") int userId,
+		@Param("createdAt") Date createdAt,
+		@Param("recordedDate") Date recordedDate,
+		@Param("weight") Double weight
+		);
+	
+	
 }

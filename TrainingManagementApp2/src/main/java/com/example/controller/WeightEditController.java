@@ -47,13 +47,13 @@ public class WeightEditController {
 		
 		// エラーチェック
 		if (bindingresult.hasErrors()) {
-			return "user/weightEdit";
+			return "user/weightEdit";		//テンプレートを返しても画面入力値が保持されるのはなぜ？
 		}
 		
 		log.info(form.toString());
 		
 		// 更新処理 
-		
+		tmService.updateWeightLogOne(form.getUserId(), form.getCreatedAt(), form.getRecordedDate(), form.getWeight());
 		
 		// 体重閲覧画面にリダイレクト
 		return "redirect:/physicals/users." + form.getUserId();
