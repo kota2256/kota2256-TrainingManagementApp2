@@ -39,8 +39,7 @@
 						<!--編集ボタン-->
 						<td>
 							<a class="btn btn-secondary btn-sm align-middle" 
-							th:href="@{'/physicals/edit/physical_details.' + ${#dates.format(item.recordedDate, 'YYYY-MM-dd')}
-							(userId=${item.userId}, createdAt=${#dates.format(item.createdAt, 'EEE MMM dd HH:mm:ss zzz yyyy')})}">
+							th:href="@{'/physicals/edit/physical_details.' + ${#dates.format(item.createdAt, 'EEE MMM dd HH:mm:ss zzz yyyy')}}">
 								<i class="fa-solid fa-pen"></i>
 							</a>
 						</td>

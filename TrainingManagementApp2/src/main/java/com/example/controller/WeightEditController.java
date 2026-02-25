@@ -11,8 +11,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.form.WeightEditForm;
 import com.example.model.WeightLog;
@@ -29,13 +29,12 @@ public class WeightEditController {
 	@Autowired
 	private ModelMapper modelMapper;
 	
-	@GetMapping("/physicals/edit/physical_details.{recodedDate}")
+	@GetMapping("/physicals/edit/physical_details.{createdAt}")
 	public String getEditForm(Model model, WeightEditForm form, 
-			@RequestParam("userId") int userId,
-			@RequestParam("createdAt") @DateTimeFormat(pattern = "EEE MMM dd HH:mm:ss zzz yyyy") Date createdAt) {
+			@PathVariable("createdAt") @DateTimeFormat(pattern = "EEE MMM dd HH:mm:ss zzz yyyy") Date createdAt) {
 		
 		// 体重記録一件取得
-		WeightLog weightLogOne = tmService.getWeightLogOne(userId, createdAt);
+		WeightLog weightLogOne = tmService.getWeightLogOne(createdAt);
 		// 画面表示用にモデル格納
 		form = modelMapper.map(weightLogOne, WeightEditForm.class);
 		model.addAttribute("weightEditForm", form);

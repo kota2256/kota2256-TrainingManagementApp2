@@ -32,10 +32,7 @@ public interface TMMapper {
 	public int countWeightLogByUserId(@Param("userId") int userId);
 	
 	// 体重記録1件取得
-	public WeightLog findWeightLogOne(
-			@Param("userId") int userId, 
-			@Param("createdAt") Date createdAt
-			);
+	public WeightLog findWeightLogOne(@Param("createdAt") Date createdAt);
 	
 	// 体重記録一件更新
 	public int updateOne(
