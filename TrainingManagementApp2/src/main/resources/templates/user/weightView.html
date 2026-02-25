@@ -44,7 +44,11 @@
 							</a>
 						</td>
 						<!--削除ボタン-->
-						<td><a class="btn btn-danger btn-sm align-middle" th:href="@{#}"><i class="fa-solid fa-trash"></i></a></td>
+						<td>
+							<form method="post" th:action="@{'/physicals/delete/physical_details.' + ${#dates.format(item.createdAt, 'EEE MMM dd HH:mm:ss zzz yyyy')}}">
+								<button type="submit" class="btn btn-danger btn-sm align-middle"><i class="fa-solid fa-trash"></i></button>
+							</form>
+						</td>
 					</tr>
 				</tbody>
 			</table>

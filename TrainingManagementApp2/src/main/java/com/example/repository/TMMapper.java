@@ -42,5 +42,7 @@ public interface TMMapper {
 		@Param("weight") Double weight
 		);
 	
+	// 体重記録一件削除
+	public int deleteOne(@Param("createdAt") Date createdAt);
 	
 }

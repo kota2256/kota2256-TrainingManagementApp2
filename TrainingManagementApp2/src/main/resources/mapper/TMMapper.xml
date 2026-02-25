@@ -93,4 +93,11 @@
 		AND created_at = #{createdAt}
 	</update>
 	
+	<!-- 体重記録1件削除 -->
+	<delete id="deleteOne">
+	DELETE 
+	FROM physical_details
+	WHERE created_at = #{createdAt}
+	</delete>
+	
 </mapper>
