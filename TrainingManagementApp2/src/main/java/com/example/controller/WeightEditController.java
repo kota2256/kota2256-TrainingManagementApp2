@@ -49,8 +49,10 @@ public class WeightEditController {
 		return "user/weightEdit";
 	}
 	
-	@PostMapping("/update")
-	public String postEditForm(Model model, @ModelAttribute @Validated WeightEditForm form, BindingResult bindingresult) {
+	@PostMapping("/physicals/edit/physical_details.{createdAt}")
+	public String postEditForm(Model model, @ModelAttribute @Validated WeightEditForm form, BindingResult bindingresult,
+			@PathVariable("createdAt") @DateTimeFormat(pattern = "EEE MMM dd HH:mm:ss zzz yyyy") Date createdAt,
+			@AuthenticationPrincipal UserDetails loginuser) {
 		
 		// エラーチェック
 		if (bindingresult.hasErrors()) {
@@ -59,11 +61,14 @@ public class WeightEditController {
 		
 		log.info(form.toString());
 		
+		// ログインユーザー情報の取得
+		MUser user = tmService.getLoginUser(loginuser.getUsername());
+		
 		// 更新処理 
-		tmService.updateWeightLogOne(form.getUserId(), form.getCreatedAt(), form.getRecordedDate(), form.getWeight());
+		tmService.updateWeightLogOne(user.getId(), createdAt, form.getRecordedDate(), form.getWeight());
 		
 		// 体重閲覧画面にリダイレクト
-		return "redirect:/physicals/users." + form.getUserId();
+		return "redirect:/physicals/users." + user.getId();
 	}
 	
 }
