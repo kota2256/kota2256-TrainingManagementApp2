@@ -66,6 +66,7 @@
 	SELECT *
 	FROM physical_details
 	WHERE user_id = #{userId}
+	ORDER BY recorded_date
 	LIMIT #{pageSize} OFFSET #{offset}		<!-- #{limit} → 何件取得するか、#{offset} → 開始位置-->
 	</select>
 	
