@@ -1,5 +1,7 @@
 package com.example.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.model.MUser;
@@ -12,5 +14,7 @@ public interface TMMapper {
 	
 	// ログインユーザー取得
 	public MUser findLoginUser(String email);
-	
+
+	// 全件取得
+	public List<MUser> findMany(); 
 }
