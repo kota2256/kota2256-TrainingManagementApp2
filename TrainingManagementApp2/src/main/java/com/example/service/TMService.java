@@ -30,7 +30,7 @@ public interface TMService {
 	public int updateWeightLogOne(int userId, Date createdAt, Date recordedDate, Double weight);
 	
 	// 体重記録 1件削除
-	public int deleteWeightLogOne(Date createdAt);
+	public int deleteWeightLogOne(int userId, Date createdAt);
 	
 	//ユーザー情報全件取得
 	public List<MUser> getUsers();

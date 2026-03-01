@@ -45,7 +45,9 @@ public interface TMMapper {
 		);
 	
 	// 体重記録一件削除
-	public int deleteOne(@Param("createdAt") Date createdAt);
+	public int deleteOne(
+			@Param("userId") int userId,
+			@Param("createdAt") Date createdAt);
 	
 
 	// 全件取得

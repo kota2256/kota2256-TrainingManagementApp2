@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.model.MUser;
-import com.example.model.WeightLog;
 import com.example.service.TMService;
 
 @Controller
@@ -28,12 +27,9 @@ public class WeightDeleteController {
 		// ログインユーザー情報の取得
 		MUser user = tmService.getLoginUser(loginuser.getUsername());
 		
-		// 体重記録一件取得(リダイレクト用)	
-		WeightLog weightLogOne = tmService.getWeightLogOne(user.getId(), createdAt);
-		
 		// 削除処理
-		tmService.deleteWeightLogOne(createdAt);
+		tmService.deleteWeightLogOne(user.getId(), createdAt);
 		
-		return "redirect:/physicals/users." + weightLogOne.getUserId();
+		return "redirect:/physicals/users." + user.getId();
 	}
 }
