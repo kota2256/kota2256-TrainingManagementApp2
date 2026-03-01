@@ -80,7 +80,8 @@
 	<select id="findWeightLogOne" resultType="WeightLog">
 	SELECT *
 	FROM physical_details
-	WHERE created_at = #{createdAt}
+	WHERE user_id = #{userId}
+		AND created_at = #{createdAt}
 	</select>
 	
 	<!-- 体重記録1件更新 -->
@@ -89,7 +90,7 @@
 	SET
 		recorded_date = #{recordedDate}, 
 		weight = #{weight}
-	WHERE  user_id = #{userId}
+	WHERE user_id = #{userId}
 		AND created_at = #{createdAt}
 	</update>
 	
