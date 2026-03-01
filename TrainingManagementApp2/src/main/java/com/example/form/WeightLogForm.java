@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -18,5 +19,6 @@ public class WeightLogForm {
 	
 	@Digits(integer=3, fraction=1)
 	@NotNull
+	@PositiveOrZero
 	private Double weight;
 }
