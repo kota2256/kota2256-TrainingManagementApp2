@@ -28,3 +28,16 @@
 	padding: 15px;
 	margin:auto;
 }
+
+.list-width{
+	width:100%;
+	max-width:1000px;
+	padding: 15px;
+	margin:auto;
+}
+
+.btn-width{
+	width:100%;
+	max-width:500px;
+	margin:auto;
+}
