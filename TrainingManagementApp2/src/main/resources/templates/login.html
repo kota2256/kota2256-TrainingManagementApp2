@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div layout:fragment="content-pre" class="form-login">
-		<form method="post" th:action="@{/login}">
+		<form method="post" th:action="@{/login}" th:object="${loginForm}">
 			<h6 class="text-center font-weight-bold mt-5 mb-5">ログイン</h6>
 			<!--ログインエラーメッセージ-->
 			<p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null"
@@ -24,12 +24,12 @@
 			<!--メールアドレス-->
 			<div class="mb-3">
 				<label for="email" th:text="#{email}"></label>
-				<input id="email" type="text" class="form-control" name="email">
+				<input type="text" class="form-control" th:field="*{email}">
 			</div>
 			<!--パスワード-->
 			<div class="mb-3">
 				<label for="password" th:text="#{password}"></label>
-				<input id="password" type="password" class="form-control" name="password">
+				<input type="password" class="form-control" th:field="*{password}">
 			</div>
 			<!--ログインボタン-->
 			<input type="submit" value="ログイン" class="btn btn-outline-dark w-100 mt-3 mb-3">

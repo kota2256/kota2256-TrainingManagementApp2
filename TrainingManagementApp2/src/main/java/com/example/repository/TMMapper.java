@@ -30,4 +30,7 @@ public interface TMMapper {
 	// 体重記録件数カウント
 	public int countWeightLogByUserId(@Param("userId") int userId);
 	
+
+	// 全件取得
+	public List<MUser> findMany(); 
 }
