@@ -45,4 +45,7 @@ public interface TMMapper {
 		);
 	
 	
+
+	// 全件取得
+	public List<MUser> findMany(); 
 }

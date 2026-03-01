@@ -67,4 +67,9 @@ public class TMServiceImpl implements TMService {
 		return mapper.updateOne(userId, createdAt, recordedDate, weight);
 	}
 	
+	//ユーザー情報全件取得
+	@Override
+	public List<MUser> getUsers() {
+		return mapper.findMany();
+	}
 }

@@ -94,4 +94,12 @@
 		AND created_at = #{createdAt}
 	</update>
 	
+	<!-- 全件取得 -->
+	<select id="findMany" resultMap="user">
+		SELECT *
+		FROM users
+		LEFT JOIN roles
+			ON users.role_code = roles.code
+	</select>
+	
 </mapper>
