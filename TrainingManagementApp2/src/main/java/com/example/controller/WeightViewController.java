@@ -21,24 +21,23 @@ public class WeightViewController {
 	private TMService tmService;
 	
 	@GetMapping("physicals/users.{id}")
-	public String getWeightView(Model model, @PathVariable("id") String Id, @AuthenticationPrincipal UserDetails loginuser, 
+	public String getWeightView(Model model, @PathVariable("id") int id, @AuthenticationPrincipal UserDetails loginuser, 
 			@RequestParam(defaultValue = "1") int page) {
 		
-		//体重記録のリスト取得しモデル格納
+		//体重記録のリスト取得しモデル格納（ページネーションなし）
 //		List<WeightLog> weightLogList = tmService.getWeightLog(loginuser.getUsername());
 //		model.addAttribute(weightLogList);
 		
 		//体重記録のリスト取得(ページネーション用）
 		int pageSize = 10;
-		List<WeightLog> weightLogList = tmService.getWeightLog(loginuser.getUsername(), page, pageSize);
+		List<WeightLog> weightLogList = tmService.getWeightLog(id, page, pageSize);
 		
 		// 体重記録の総件数から総ページ数の取得(ページネーション用）
-		int totalCount = tmService.getWeightLogCount(loginuser.getUsername());
+		int totalCount = tmService.getWeightLogCount(id);
 		int totalPages = (int) Math.ceil((double) totalCount / pageSize);		//Math.ceilで切り上げ
-		model.addAttribute(weightLogList);
 		
 		//モデル格納
-		model.addAttribute(weightLogList);
+		model.addAttribute(weightLogList);	//属性名省略（Listの場合オブジェクトの先頭小文字の文字列に「List」が付加される＝「weightLogList」）
 		model.addAttribute("currentPage", page);
 		model.addAttribute("totalPages", totalPages);
 		
