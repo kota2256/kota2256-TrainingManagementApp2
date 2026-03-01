@@ -21,7 +21,7 @@ public interface TMService {
 	
 	// 体重記録の総件数取得
 	public int getWeightLogCount(int id);
-}
+
 	//ユーザー情報全件取得
 	public List<MUser> getUsers();
  }
