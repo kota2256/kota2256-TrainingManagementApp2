@@ -24,7 +24,7 @@ public interface TMService {
 	public int getWeightLogCount(String email);
 	
 	// 体重記録 1件取得
-	public WeightLog getWeightLogOne(Date createdAt);
+	public WeightLog getWeightLogOne(int userId, Date createdAt);
 	
 	// 体重記録 1件更新
 	public int updateWeightLogOne(int userId, Date createdAt, Date recordedDate, Double weight);
@@ -32,5 +32,7 @@ public interface TMService {
 	// 体重記録 1件削除
 	public int deleteWeightLogOne(Date createdAt);
 	
-}
+	//ユーザー情報全件取得
+	public List<MUser> getUsers();
+ }
 

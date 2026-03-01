@@ -57,8 +57,8 @@ public class TMServiceImpl implements TMService {
 	
 	// 体重記録 1件取得
 	@Override
-	public WeightLog getWeightLogOne(Date createdAt) {
-		return mapper.findWeightLogOne(createdAt);
+	public WeightLog getWeightLogOne(int userId, Date createdAt) {
+		return mapper.findWeightLogOne(userId, createdAt);
 	}
 	
 	// 体重記録 1件更新
@@ -73,4 +73,9 @@ public class TMServiceImpl implements TMService {
 		return mapper.deleteOne(createdAt);
 	}
 	
+	//ユーザー情報全件取得
+	@Override
+	public List<MUser> getUsers() {
+		return mapper.findMany();
+	}
 }

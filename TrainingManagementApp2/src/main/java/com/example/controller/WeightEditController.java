@@ -5,6 +5,8 @@ import java.util.Date;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.form.WeightEditForm;
+import com.example.model.MUser;
 import com.example.model.WeightLog;
 import com.example.service.TMService;
 
@@ -31,18 +34,25 @@ public class WeightEditController {
 	
 	@GetMapping("/physicals/edit/physical_details.{createdAt}")
 	public String getEditForm(Model model, WeightEditForm form, 
-			@PathVariable("createdAt") @DateTimeFormat(pattern = "EEE MMM dd HH:mm:ss zzz yyyy") Date createdAt) {
+			@PathVariable("createdAt") @DateTimeFormat(pattern = "EEE MMM dd HH:mm:ss zzz yyyy") Date createdAt,
+			@AuthenticationPrincipal UserDetails loginuser) {
+		
+		// ログインユーザー情報の取得
+		MUser user = tmService.getLoginUser(loginuser.getUsername());
 		
 		// 体重記録一件取得
-		WeightLog weightLogOne = tmService.getWeightLogOne(createdAt);
+		WeightLog weightLogOne = tmService.getWeightLogOne(user.getId(), createdAt);
+		
 		// 画面表示用にモデル格納
 		form = modelMapper.map(weightLogOne, WeightEditForm.class);
 		model.addAttribute("weightEditForm", form);
 		return "user/weightEdit";
 	}
 	
-	@PostMapping("/update")
-	public String postEditForm(Model model, @ModelAttribute @Validated WeightEditForm form, BindingResult bindingresult) {
+	@PostMapping("/physicals/edit/physical_details.{createdAt}")
+	public String postEditForm(Model model, @ModelAttribute @Validated WeightEditForm form, BindingResult bindingresult,
+			@PathVariable("createdAt") @DateTimeFormat(pattern = "EEE MMM dd HH:mm:ss zzz yyyy") Date createdAt,
+			@AuthenticationPrincipal UserDetails loginuser) {
 		
 		// エラーチェック
 		if (bindingresult.hasErrors()) {
@@ -51,11 +61,14 @@ public class WeightEditController {
 		
 		log.info(form.toString());
 		
+		// ログインユーザー情報の取得
+		MUser user = tmService.getLoginUser(loginuser.getUsername());
+		
 		// 更新処理 
-		tmService.updateWeightLogOne(form.getUserId(), form.getCreatedAt(), form.getRecordedDate(), form.getWeight());
+		tmService.updateWeightLogOne(user.getId(), createdAt, form.getRecordedDate(), form.getWeight());
 		
 		// 体重閲覧画面にリダイレクト
-		return "redirect:/physicals/users." + form.getUserId();
+		return "redirect:/physicals/users." + user.getId();
 	}
 	
 }
