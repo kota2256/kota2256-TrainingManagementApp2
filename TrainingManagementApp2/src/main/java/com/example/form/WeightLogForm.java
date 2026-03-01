@@ -14,9 +14,9 @@ public class WeightLogForm {
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@NotNull
-	public Date recordedDate;
+	private Date recordedDate;
 	
 	@Digits(integer=3, fraction=1)
 	@NotNull
-	public Double weight;
+	private Double weight;
 }
