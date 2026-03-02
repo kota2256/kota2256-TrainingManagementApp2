@@ -44,7 +44,8 @@ public interface TMMapper {
 		@Param("weight") Double weight
 		);
 	
-	
+	//体重記録
+	public int insertWeightLog(WeightLog weightLog);
 
 	// 全件取得
 	public List<MUser> findMany(); 

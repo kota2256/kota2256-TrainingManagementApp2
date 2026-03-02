@@ -28,6 +28,12 @@ public class TMServiceImpl implements TMService {
 		mapper.insertOne(user);
 	}
 	
+	//体重記録1件登録
+	@Override
+	public void  insertWeightLog(WeightLog weightLog) {
+		mapper.insertWeightLog(weightLog);
+	}
+	
 	//ログインユーザー情報取得
 	@Override
 	public MUser getLoginUser(String email) {
