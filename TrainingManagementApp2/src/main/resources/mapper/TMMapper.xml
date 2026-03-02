@@ -82,6 +82,7 @@
 	SELECT COUNT(*)
 	FROM physical_details
 	WHERE user_id = #{userId}
+	</select>
   
 	<!-- 全件取得 -->
 	<select id="findMany" resultMap="user">
