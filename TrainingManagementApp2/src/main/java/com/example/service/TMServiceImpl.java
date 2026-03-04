@@ -40,25 +40,21 @@ public class TMServiceImpl implements TMService {
 		return mapper.findLoginUser(email);
 	}
 	
-	// 体重記録 全件取得
-	@Override
-	public List<WeightLog> getWeightLog(String email){
-		// email（username）からuserId取得
-		int userId = getLoginUser(email).getId();
-		return mapper.findManyWeightLog(userId);
-	}
+	// 体重記録 全件取得（ページネーションなし）
+//	@Override
+//	public List<WeightLog> getWeightLog(int id){
+//		return mapper.findManyWeightLog(id);
+//	}
 	
-	// 体重記録 全件取得取得（ページネーション用）
-	public List<WeightLog> getWeightLog(String email, int page, int pageSize){
-		int userId = getLoginUser(email).getId();
+	// 体重記録 全件取得（ページネーション用）
+	public List<WeightLog> getWeightLog(int id, int page, int pageSize){
 		int offset = (page - 1) * pageSize;
-		return mapper.findWeightLogByUserId(userId, pageSize, offset);
+		return mapper.findWeightLogByUserId(id, pageSize, offset);
 	}
 	
 	// 体重記録の総件数取得
-	public int getWeightLogCount(String email) {
-		int userId = getLoginUser(email).getId();
-		return mapper.countWeightLogByUserId(userId);
+	public int getWeightLogCount(int id) {
+		return mapper.countWeightLogByUserId(id);
 	}
 	
 	// 体重記録 1件取得

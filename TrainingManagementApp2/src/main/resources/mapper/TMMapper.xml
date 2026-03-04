@@ -38,7 +38,7 @@
 		)
 	</insert>
 	
-		<!-- 体重記録1件登録 --> 
+	<!-- 体重記録1件登録 --> 
 	<insert id="insertWeightLog">
 		INSERT INTO physical_details (
 			user_id,
@@ -73,6 +73,7 @@
 	SELECT *
 	FROM physical_details
 	WHERE user_id = #{userId}
+	ORDER BY recorded_date
 	LIMIT #{pageSize} OFFSET #{offset}		<!-- #{limit} → 何件取得するか、#{offset} → 開始位置-->
 	</select>
 	

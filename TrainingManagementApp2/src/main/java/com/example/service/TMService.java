@@ -17,14 +17,14 @@ public interface TMService {
 	//ログインユーザー情報取得
 	public MUser getLoginUser(String email);
 	
-	// 体重記録 全件取得
-	public List<WeightLog> getWeightLog(String email);
+	// 体重記録 全件取得（ページネーションなし）
+	//public List<WeightLog> getWeightLog(int id);
 	
-	// 体重記録 全件取得取得（ページネーション用）
-	public List<WeightLog> getWeightLog(String email, int page, int pageSize);
+	// 体重記録 全件取得（ページネーション用）
+	public List<WeightLog> getWeightLog(int id, int page, int pageSize);
 	
 	// 体重記録の総件数取得
-	public int getWeightLogCount(String email);
+	public int getWeightLogCount(int id);
 	
 	// 体重記録 1件取得
 	public WeightLog getWeightLogOne(int userId, Date createdAt);
