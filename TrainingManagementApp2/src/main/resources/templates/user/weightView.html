@@ -36,7 +36,14 @@
 					<tr th:each="item:${weightLogList}">
 						<td th:text="${#dates.format(item.recordedDate, 'YYYY/MM/dd')}" class="align-middle"></td>
 						<td th:text="${item.weight} + 'kg'" class="align-middle"></td>
-						<td><a class="btn btn-secondary btn-sm align-middle" th:href="@{#}"><i class="fa-solid fa-pen"></i></a></td>
+						<!--編集ボタン-->
+						<td>
+							<a class="btn btn-secondary btn-sm align-middle" 
+							th:href="@{'/physicals/edit/physical_details.' + ${#dates.format(item.createdAt, 'EEE MMM dd HH:mm:ss zzz yyyy')}}">
+								<i class="fa-solid fa-pen"></i>
+							</a>
+						</td>
+						<!--削除ボタン-->
 						<td><a class="btn btn-danger btn-sm align-middle" th:href="@{#}"><i class="fa-solid fa-trash"></i></a></td>
 					</tr>
 				</tbody>

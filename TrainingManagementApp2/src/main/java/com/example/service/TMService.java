@@ -1,5 +1,6 @@
 package com.example.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.example.model.MUser;
@@ -17,14 +18,20 @@ public interface TMService {
 	public MUser getLoginUser(String email);
 	
 	// 体重記録 全件取得（ページネーションなし）
-//	public List<WeightLog> getWeightLog(int id);
+	//public List<WeightLog> getWeightLog(int id);
 	
 	// 体重記録 全件取得（ページネーション用）
 	public List<WeightLog> getWeightLog(int id, int page, int pageSize);
 	
 	// 体重記録の総件数取得
 	public int getWeightLogCount(int id);
-
+	
+	// 体重記録 1件取得
+	public WeightLog getWeightLogOne(int userId, Date createdAt);
+	
+	// 体重記録 1件更新
+	public int updateWeightLogOne(int userId, Date createdAt, Date recordedDate, Double weight);
+	
 	//ユーザー情報全件取得
 	public List<MUser> getUsers();
  }

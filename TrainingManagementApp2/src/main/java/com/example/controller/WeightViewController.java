@@ -24,6 +24,7 @@ public class WeightViewController {
 	public String getWeightView(Model model, @PathVariable("id") int id, @AuthenticationPrincipal UserDetails loginuser, 
 			@RequestParam(defaultValue = "1") int page) {
 		
+
 		//体重記録のリスト取得しモデル格納（ページネーションなし）
 //		List<WeightLog> weightLogList = tmService.getWeightLog(loginuser.getUsername());
 //		model.addAttribute(weightLogList);
