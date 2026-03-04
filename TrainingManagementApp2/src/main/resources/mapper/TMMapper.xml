@@ -61,6 +61,29 @@
 		WHERE email = #{email} 
 	</select> 
 	
+	<!-- 体重記録の取得 -->
+	<select id="findManyWeightLog" resultType="WeightLog">
+	SELECT *
+	FROM physical_details
+	WHERE user_id = #{userId}
+	</select>
+	
+	<!-- 体重記録一覧取得 -->
+	<select id="findWeightLogByUserId" resultType="WeightLog">
+	SELECT *
+	FROM physical_details
+	WHERE user_id = #{userId}
+	ORDER BY recorded_date
+	LIMIT #{pageSize} OFFSET #{offset}		<!-- #{limit} → 何件取得するか、#{offset} → 開始位置-->
+	</select>
+	
+	<!-- 件数取得 -->
+	<select id="countWeightLogByUserId" resultType="int">
+	SELECT COUNT(*)
+	FROM physical_details
+	WHERE user_id = #{userId}
+	</select>
+  
 	<!-- 全件取得 -->
 	<select id="findMany" resultMap="user">
 		SELECT *
