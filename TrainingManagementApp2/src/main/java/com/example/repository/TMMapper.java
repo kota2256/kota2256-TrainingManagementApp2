@@ -18,7 +18,8 @@ public interface TMMapper {
 	// ログインユーザー取得
 	public MUser findLoginUser(String email);
 	
-	//体重記録全件取得
+
+	// 体重記録全件取得
 	public List<WeightLog> findManyWeightLog(int userId);
 	
 	// 体重記録一覧（ページネーション用）
@@ -48,8 +49,10 @@ public interface TMMapper {
 	public int deleteOne(
 			@Param("userId") int userId,
 			@Param("createdAt") Date createdAt);
-	
 
+	//体重記録
+	public int insertWeightLog(WeightLog weightLog);
+	
 	// 全件取得
 	public List<MUser> findMany(); 
 }
