@@ -69,6 +69,12 @@ public class TMServiceImpl implements TMService {
 		return mapper.updateOne(userId, createdAt, recordedDate, weight);
 	}
 	
+	// 体重記録 1件削除
+	@Override
+	public int deleteWeightLogOne(int userId, Date createdAt) {
+		return mapper.deleteOne(userId, createdAt);
+	}
+	
 	//ユーザー情報全件取得
 	@Override
 	public List<MUser> getUsers() {

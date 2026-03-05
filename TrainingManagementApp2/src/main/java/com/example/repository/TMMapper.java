@@ -45,6 +45,11 @@ public interface TMMapper {
 		@Param("weight") Double weight
 		);
 	
+	// 体重記録一件削除
+	public int deleteOne(
+			@Param("userId") int userId,
+			@Param("createdAt") Date createdAt);
+
 	//体重記録
 	public int insertWeightLog(WeightLog weightLog);
 	
